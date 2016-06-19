@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 var authService = require('../services/AuthService.js');
 var awsService = require('../services/AwsService.js');
