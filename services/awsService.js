@@ -15,6 +15,7 @@ if(process.env.NODE_ENV == 'development') {
   });
 }
 
+var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports = {
@@ -34,6 +35,13 @@ module.exports = {
     return docClient.delete(params).promise();
   },
 
+  scan: function(params){
+    return docClient.scan(params).promise();
+  },
+
+  batchWriteItem: function(params){
+    return dynamodb.batchWriteItem(params).promise();
+  },
 
   getUUID: function(){
     return uuid.v1();
