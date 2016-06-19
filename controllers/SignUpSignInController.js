@@ -47,6 +47,7 @@ module.exports = {
 
     try{
       let response = yield awsService.put(params);
+      delete item.password;
       this.body = item;
       this.status = 200;
     }catch(ex){
@@ -100,6 +101,7 @@ module.exports = {
           this.body = error;
           this.status = 400;
         }else{
+          delete user.password;
           this.body = user;
           this.status = 200;
         }
