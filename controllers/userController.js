@@ -54,10 +54,12 @@ module.exports = {
       let error;
       if(ex.code == 'ConditionalCheckFailedException'){
         error = {
+          status: 'error',
           message: '用户 \'' + item.username + '\'' + ' 已存在.'
         }
       }else{
         error = {
+         status: 'error',
          message: ex.message,
          code: ex.code
        }
@@ -88,6 +90,7 @@ module.exports = {
 
       if(users.length == 0){
         error = {
+          status: 'error',
           message: '用户 ' + item.username + ' 不存在.'
         }
         this.body = error;
@@ -96,6 +99,7 @@ module.exports = {
         let user = users[0];
         if(!authService.comparePassword(item.password,user.password)){
           error = {
+            status: 'error',
             message: '密码不正确.'
           }
           this.body = error;
@@ -108,6 +112,7 @@ module.exports = {
       }
     }catch(ex){
       error = {
+        status: 'error',
         message: ex.message,
         code: ex.code
       }
@@ -152,6 +157,7 @@ module.exports = {
       this.status = 200;
     }catch(ex){
       let error = {
+        status: 'error',
         message: ex.message,
         code: ex.code
       }
@@ -184,6 +190,7 @@ module.exports = {
       this.status = 200;
     }catch(ex){
       let error = {
+        status: 'error',
         message: ex.message,
         code: ex.code
       }

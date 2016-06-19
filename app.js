@@ -5,18 +5,18 @@ var app = module.exports = koa();
 var routes = require('koa-route');
 var cors = require('koa-cors');
 
-var signUpSignInController = require('./controllers/SignUpSignInController');
+var userController = require('./controllers/userController');
 
 app.use(cors({
 	origin: '*',
 	methods: 'GET,HEAD,PUT,POST,DELETE,OPTIONS'
 }));
 
-app.use(routes.post('/user/signup/', signUpSignInController.signUp));
-app.use(routes.post('/user/signin/', signUpSignInController.signIn));
-app.use(routes.get('/user/check/:username', signUpSignInController.check));
-app.use(routes.get('/user/list/', signUpSignInController.list));
-app.use(routes.get('/user/loaddata/', signUpSignInController.loadData));
+app.use(routes.post('/user/signup/', userController.signUp));
+app.use(routes.post('/user/signin/', userController.signIn));
+app.use(routes.get('/user/check/:username', userController.check));
+app.use(routes.get('/user/list/', userController.list));
+app.use(routes.get('/user/loaddata/', userController.loadData));
 
 
 app.listen(3000);
