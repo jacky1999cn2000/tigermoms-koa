@@ -5,7 +5,7 @@ var app = module.exports = koa();
 var routes = require('koa-route');
 var cors = require('koa-cors');
 
-var userController = require('./controllers/userController');
+var userController = require('./controllers/UserController');
 
 app.use(cors({
 	origin: '*',
