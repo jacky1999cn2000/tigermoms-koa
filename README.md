@@ -75,51 +75,51 @@ dynamodb.createTable(params, function(err, data) {
     // user doesn't exist
     []
     ```
-    * POST http://192.168.99.100:3002/user/signup/
-      * Request
-      ```javascript
-      {
-        "username":"may@gmail.com",
+  * POST http://192.168.99.100:3002/user/signup/
+    * Request
+    ```javascript
+    {
+      "username":"may@gmail.com",
+      "password":"111111"
+    }
+    ```
+    * Response
+    ```javascript
+    // signup succeed
+    {
+      "username": "may@gmail.com"
+    }
+
+    // user already exists
+    {
+      "status": "error",
+      "message": "用户 'may@gmail.com' 已存在."
+    }
+    ```
+  * POST http://192.168.99.100:3002/user/signin
+    * Request
+    ```javascript
+    {
+        "username":"jacky@gmail.com",
         "password":"111111"
-      }
-      ```
-      * Response
-      ```javascript
-      // signup succeed
-      {
-        "username": "may@gmail.com"
-      }
+    }
+    ```
+    * Response
+    ```javascript
+    // signup succeed
+    {
+      "username": "jacky@gmail.com"
+    }
 
-      // user already exists
-      {
-        "status": "error",
-        "message": "用户 'may@gmail.com' 已存在."
-      }
-      ```
-    * POST http://192.168.99.100:3002/user/signin
-      * Request
-      ```javascript
-      {
-          "username":"jacky@gmail.com",
-          "password":"111111"
-      }
-      ```
-      * Response
-      ```javascript
-      // signup succeed
-      {
-        "username": "jacky@gmail.com"
-      }
+    // user didn't exists
+    {
+      "status": "error",
+      "message": "用户 lily@gmail.com 不存在."
+    }
 
-      // user didn't exists
-      {
-        "status": "error",
-        "message": "用户 lily@gmail.com 不存在."
-      }
-
-      // password incorrect
-      {
-        "status": "error",
-        "message": "密码不正确."
-      }
-      ```      
+    // password incorrect
+    {
+      "status": "error",
+      "message": "密码不正确."
+    }
+    ```      
