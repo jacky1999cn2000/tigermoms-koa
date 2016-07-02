@@ -6,6 +6,7 @@ var routes = require('koa-route');
 var cors = require('koa-cors');
 
 var userController = require('./controllers/UserController');
+var userInfoController = require('./controllers/UserInfoController');
 
 app.use(cors({
 	origin: '*',
@@ -18,6 +19,7 @@ app.use(routes.get('/user/check/:username', userController.check));
 app.use(routes.get('/user/list/', userController.list));
 app.use(routes.get('/user/loaddata/', userController.loadData));
 
+app.use(routes.get('/userinfo/:username', userInfoController.getUserInfo));
 
 app.listen(3000);
 console.log('The app is listening at port 3000');
