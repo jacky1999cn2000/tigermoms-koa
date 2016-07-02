@@ -4,9 +4,8 @@
 ```javascript
 var params = {  
     TableName : "UserInfo",  
-    KeySchema: [         
-      { AttributeName: "county", KeyType: "HASH" },  //Partition key  
-      { AttributeName: "city", KeyType: "RANGE" }  //Sort key  
+    KeySchema: [       
+      { AttributeName: "username", KeyType: "HASH" }  //Partition key    
     ],  
     AttributeDefinitions: [         
         { AttributeName: "county", AttributeType: "S" },
@@ -15,9 +14,9 @@ var params = {
     ],  
     GlobalSecondaryIndexes: [
         {
-            IndexName: "UserNameIndex",
+            IndexName: "CountyIndex",
             KeySchema: [
-                {AttributeName: "username", KeyType: "HASH"}
+                { AttributeName: "county", KeyType: "HASH" }  //Partition key  
             ],
             Projection: {
                 "ProjectionType": "ALL"
@@ -26,7 +25,20 @@ var params = {
                 "ReadCapacityUnits": 1,
                 "WriteCapacityUnits": 1
             }
-        }
+        },
+        {
+            IndexName: "CityIndex",
+            KeySchema: [
+                { AttributeName: "city", KeyType: "HASH" }  //Partition key  
+            ],
+            Projection: {
+                "ProjectionType": "ALL"
+            },
+            ProvisionedThroughput: {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            }
+        }    
     ],
     ProvisionedThroughput: {         
         ReadCapacityUnits: 1,   

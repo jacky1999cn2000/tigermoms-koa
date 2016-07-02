@@ -19,7 +19,9 @@ app.use(routes.get('/user/check/:username', userController.check));
 app.use(routes.get('/user/list/', userController.list));
 app.use(routes.get('/user/loaddata/', userController.loadData));
 
-app.use(routes.get('/userinfo/:username', userInfoController.getUserInfo));
+app.use(routes.get('/userinfo/data/:username', userInfoController.getUserInfo));
+app.use(routes.get('/userinfo/list/', userInfoController.list));
+app.use(routes.get('/userinfo/loaddata/', userInfoController.loadData));
 
 app.listen(3000);
 console.log('The app is listening at port 3000');
