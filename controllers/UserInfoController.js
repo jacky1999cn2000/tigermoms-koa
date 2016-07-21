@@ -30,6 +30,42 @@ module.exports = {
     }
   },
 
+  createUserInfo: function* (){
+    console.log('createUserInfo');
+    let item = yield parse(this);
+    console.log('item ',item);
+
+    let params = {
+      TableName: 'UserInfo',
+      Item: item,
+      ConditionExpression: 'attribute_not_exists(username)'
+    };
+
+    try{
+      let response = yield awsService.put(params);
+      console.log('response ',response);
+      this.body = item;
+      this.status = 200;
+    }catch(ex){
+      console.log('ex ',ex);
+      let error;
+      if(ex.code == 'ConditionalCheckFailedException'){
+        error = {
+          status: 'error',
+          message: '用户 \'' + item.username + '\'' + ' 已存在.'
+        }
+      }else{
+        error = {
+         status: 'error',
+         message: ex.message,
+         code: ex.code
+       }
+      }
+      this.body = error;
+      this.status = 400;
+    }
+  },
+
   /*
     populate the UserInfo table - only for testing purpose during development
   */
@@ -41,7 +77,7 @@ module.exports = {
       let item = {
         username: { S: record.username},
         nickname: { S: record.nickname},
-        role: { S: record.role},
+        gender: { S: record.gender},
         introduction: { S: record.introduction},
         zipCode: { S: record.zipCode},
         city: { S: record.city},
@@ -99,8 +135,7 @@ module.exports = {
 
     let params = {
         TableName: 'UserInfo',
-        ProjectionExpression: "username, nickname, #role, introduction, zipCode, city, county, address, longitude, latitude, wechat, weibo, facebook, isWechatPrivate, isWeiboPrivate, isFacebookPrivate",
-        ExpressionAttributeNames: {"#role": "role"}
+        ProjectionExpression: "username, nickname, gender, introduction, city, county, address, longitude, latitude, wechat, weibo, facebook, isWechatPrivate, isWeiboPrivate, isFacebookPrivate, hasKids, kidInfoList",
     };
 
     try{

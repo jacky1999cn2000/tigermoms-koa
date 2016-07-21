@@ -2,9 +2,8 @@
   {
     "username": "melody@gmail.com",
     "nickname": "melody",
-    "role": "单身女孩",
+    "gender": "女",
     "introduction": "大家好,我是Melody",
-    "zipCode": "94568",
     "city": "Dublin",
     "county": "Alameda",
     "address": "Dublin, Alameda, CA",
@@ -15,14 +14,15 @@
     "facebook": "facebook account",
     "isWechatPrivate": true,
     "isWeiboPrivate": true,
-    "isFacebookPrivate": true
+    "isFacebookPrivate": true,
+    "hasKids": false,
+    "kidInfoList": "[]"
   },
   {
     "username": "vivian@gmail.com",
-    "nickname": "melody",
-    "role": "妈妈",
+    "nickname": "vivian",
+    "gender": "女",
     "introduction": "大家好,我是Vivian",
-    "zipCode": "94568",
     "city": "Dublin",
     "county": "Alameda",
     "address": "Dublin, Alameda, CA",
@@ -33,14 +33,15 @@
     "facebook": "facebook account",
     "isWechatPrivate": true,
     "isWeiboPrivate": true,
-    "isFacebookPrivate": true
+    "isFacebookPrivate": true,
+    "hasKids": true,
+    "kidInfoList": "[{\"year\":\"2014\",\"gender\":\"女孩\"}]"
   },
   {
     "username": "jacky@gmail.com",
     "nickname": "jacky",
-    "role": "爸爸",
+    "gender": "男",
     "introduction": "大家好,我是Jacky",
-    "zipCode": "94568",
     "city": "Dublin",
     "county": "Alameda",
     "address": "Dublin, Alameda, CA",
@@ -51,6 +52,8 @@
     "facebook": "facebook account",
     "isWechatPrivate": true,
     "isWeiboPrivate": true,
-    "isFacebookPrivate": true
+    "isFacebookPrivate": true,
+    "hasKids": true,
+    "kidInfoList": "[{\"year\":\"2014\",\"gender\":\"女孩\"}]"
   }
 ]
